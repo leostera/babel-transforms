@@ -1,0 +1,19 @@
+language: node_js
+
+node_js:
+  - '6'
+
+env:
+  global:
+    - NODE_ENV=CI
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - make build
+  - make test
+
+after_success:
+  - "./node_modules/.bin/codecov"
